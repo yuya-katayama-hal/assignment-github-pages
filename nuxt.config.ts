@@ -5,6 +5,6 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui'],
   css: ["~/assets/main.css"],
   app: {
-    baseURL: process.env.PR_NUMBER ? `/pr/${process.env.PR_NUMBER}/` : '/',
+    baseURL: '/' + process.env.REPO_NAME + (process.env.PR_NUMBER ? `/pr/${process.env.PR_NUMBER}/` : '/'),
   }
 });

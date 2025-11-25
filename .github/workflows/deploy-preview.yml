@@ -24,10 +24,12 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: "24"
+      - run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}" >> $GITHUB_ENV
       - name: build
         run: |
           pushd main
           npm install
+          export REPO_NAME=${{ env.REPOSITORY_NAME }}
           export PR_NUMBER=${{ github.event.pull_request.number }}
           npx nuxt generate --preset github_pages
           popd
