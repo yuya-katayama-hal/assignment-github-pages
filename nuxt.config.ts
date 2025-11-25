@@ -4,4 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/ui'],
   css: ["~/assets/main.css"],
-})
+  app: {
+    baseURL: '/' + process.env.REPO_NAME + (process.env.PR_NUMBER ? `/pr/${process.env.PR_NUMBER}/` : '/'),
+  }
+});
