@@ -16,25 +16,26 @@ jobs:
         with:
           ref: "main"
           path: "main"
-      - run: pushd main
       - uses: actions/setup-node@v5
         with:
           node-version: "24"
       - name: build
         run: |
+          pushd main
           npm install
           npx nuxt generate --preset github_pages
-      - run: popd
+          popd
       - uses: actions/checkout@v5
         with:
           ref: "gh-pages"
           path: "gh-pages"
       - run: cp -r main/dist/* gh-pages/
-      - run: pushd gh-pages
       - name: commit-and-push
         run: |
+          pushd gh-pages
           git config user.name yuya-katayama-hal
           git config user.email ths51288@ths.hal.ac.jp
           git add .
           git commit -m "Update"
           git push
+          popd
