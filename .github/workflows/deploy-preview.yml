@@ -19,7 +19,6 @@ jobs:
         with:
           ref: "main"
           path: "main"
-      - run: pushd main
       - uses: actions/setup-node@v5
         with:
           node-version: "24"
@@ -27,9 +26,10 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
+          pushd main
           npm install
           npx nuxt generate --preset github_pages
-      - run: popd
+          popd
       - uses: actions/checkout@v5
         with:
           ref: "gh-pages"
