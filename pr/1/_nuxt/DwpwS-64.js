@@ -1,0 +1,1 @@
+import{_ as n,f as s,w as a,g as o,o as c,a as r}from"./hVwxZtw-.js";const _={};function f(l,e){const t=o;return c(),s(t,{class:"flex justify-center"},{default:a(()=>[...e[0]||(e[0]=[r("span",null,"Hello Nuxt",-1)])]),_:1})}const u=n(_,[["render",f]]);export{u as default};
