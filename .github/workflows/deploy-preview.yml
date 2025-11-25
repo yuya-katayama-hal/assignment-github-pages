@@ -26,11 +26,10 @@ jobs:
         with:
           node-version: "24"
       - name: build
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           pushd main
           npm install
+          export PR_NUMBER=${{ github.event.pull_request.number }}
           npx nuxt generate --preset github_pages
           popd
       - uses: actions/checkout@v5
